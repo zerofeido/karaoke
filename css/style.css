@@ -1,0 +1,597 @@
+/* ベース設定 */
+body {
+  height: auto;
+  min-height: 100%;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: #1e1e1e;
+  /* color: #f1f1f1; */
+}
+
+h1,
+h2,
+h3,
+p,
+label,
+span {
+  color: #f1f1f1;
+}
+
+/*****************/
+/* ライトモード用 */
+/*****************/
+body.light-mode {
+  background-color: #f8f9fa !important;
+  color: #333 !important;
+}
+
+h1.light-mode,
+h2.light-mode,
+h3.light-mode,
+.light-modep,
+label.light-mode,
+span.light-mode {
+  color: #333 !important;
+}
+
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode p,
+body.light-mode label,
+body.light-mode span {
+  color: #333;
+}
+
+body.light-mode .card {
+  background-color: #f9f9f9;
+}
+
+body.light-mode input[type="text"],
+body.light-mode input[type="number"],
+body.light-mode select {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+body.light-mode #resultList li {
+  background-color: #f1f1f1;
+}
+
+body.light-mode .select2-container .select2-dropdown {
+  background-color: #f8f9fa;
+}
+
+body.light-mode .select2-container .select2-results__option {
+  color: #333;
+}
+
+body.light-mode
+  span.select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  color: #333; /* 白色に変更 */
+  height: 100%;
+  line-height: 100%;
+  padding: 0.6rem;
+}
+
+body.light-mode span .select2-selection.select2-selection--single {
+  background-color: #f1f1f1;
+  color: #333;
+  border-radius: 8px;
+  height: 100%;
+}
+
+/* チップス */
+body.light-mode .key-tips {
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+body.light-mode .key-tips summary {
+  color: #ffaf14;
+}
+
+/* ボトムナビ */
+body.light-mode .bottomNavContainer {
+  background-color: #f1f1f1;
+  border-top: 1px solid #ccc;
+}
+
+body.light-mode .toggleSwitchContainer {
+  color: #333;
+}
+
+body.light-mode .survey a {
+  color: #1e1e1e;
+}
+
+body.light-mode .nav-item {
+  color: #1e1e1e;
+}
+
+body.light-mode .nav-item.active {
+  color: #f0c674;
+  background-color: #45a049;
+}
+
+/******************/
+
+/* コンテナ */
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1rem;
+  margin-bottom: 110px;
+}
+
+/* カードUI */
+.card {
+  background-color: #2b2b2b;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* 見出し */
+header h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+input[type="text"] {
+  box-sizing: border-box;
+}
+
+/* 入力とボタン */
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #3a3a3a;
+  color: #ffffff;
+}
+
+/* ボタン */
+button {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* 上下補正ボタン */
+.adjust-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.adjust-controls button {
+  width: 2.5rem;
+  flex-shrink: 0;
+}
+
+.adjust-options {
+  margin-top: 12px;
+}
+.adjust-row {
+  margin-bottom: 8px;
+}
+
+.adjust-section {
+  display: none;
+  margin-top: 10px;
+}
+
+.adjust-section.open {
+  display: block;
+}
+
+.adjust-input {
+  margin: 0; /* ← 余計な margin を除去 */
+  padding: 6px 8px; /* ← 必要に応じて調整（高さや余白） */
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  width: 60px;
+  box-sizing: border-box;
+}
+
+.adjust-controls input[type="number"] {
+  flex: 1;
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+}
+
+/* セレクトエリア */
+.select-group {
+  margin-bottom: 1rem;
+}
+
+/* 結果リスト */
+#resultList {
+  list-style: none;
+  padding-left: 0;
+}
+
+#resultList li {
+  background-color: #3a3a3a;
+  padding: 0.6rem;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+}
+
+/* 入力欄が親の幅を超えないように */
+#songInput {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bottom-nav button {
+  margin-top: 0;
+}
+
+/* select2 */
+span.select2 {
+  margin-top: 0.3rem;
+  margin-bottom: 0.8rem;
+  height: 40px;
+}
+
+/* 文字の上の要素 */
+span .select2-selection.select2-selection--single {
+  background-color: #3a3a3a;
+  color: white;
+  border-radius: 8px;
+  height: 100%;
+}
+
+/* テキスト表示 */
+span.select2-container--default
+  .select2-selection--single
+  .select2-selection__rendered {
+  color: #fff; /* 白色に変更 */
+  height: 100%;
+  line-height: 100%;
+  padding: 0.6rem;
+}
+
+/* テキスト横の矢印 */
+span.select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow {
+  height: 100%;
+}
+
+span.select2-container--default
+  .select2-selection--single
+  .select2-selection__arrow
+  b {
+  border-color: #f1f1f1 transparent transparent transparent;
+}
+
+/* Select2 の表示部分（選択中のエリア） */
+.select2-container .select2-selection--single {
+  height: auto; /* 高さをテキストに合わせる */
+  border: none;
+  border-radius: 8px;
+  background-color: #3a3a3a;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+/* 検索ボックス */
+.select2-container--default .select2-search--dropdown .select2-search__field {
+  font-size: 1rem;
+  padding: 0.6rem;
+}
+
+/* 選択中テキストの位置合わせ */
+.select2-container .select2-selection__rendered {
+  color: #ffffff;
+  line-height: 1.4;
+  padding-left: 0; /* 余分な左paddingをなくす */
+}
+
+/* 矢印部分の調整 */
+.select2-container .select2-selection__arrow {
+  height: 100%;
+}
+
+/* ドロップダウンの背景 */
+.select2-container .select2-dropdown {
+  background-color: #3a3a3a;
+  border: none;
+}
+
+/* ドロップダウンの各項目 */
+.select2-container .select2-results__option {
+  color: #ffffff;
+}
+
+/* 選択中 or hover中の背景色 */
+.select2-container .select2-results__option--highlighted {
+  background-color: #555555;
+}
+
+/* アンケート */
+.survey a {
+  color: white;
+}
+
+/* ボトムナビ全体 */
+.bottomNavContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #111;
+  /* display: flex;
+  justify-content: space-around; */
+  padding: 0.5em 0;
+  border-top: 1px solid #333;
+  z-index: 999;
+}
+
+.bottomNav {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* ボトムナビの上 */
+.bottomNavTop .survey {
+  width: 100%;
+  text-align: center;
+}
+.bottomNavTop .toggleSwitchContainer {
+  width: 100%;
+  justify-content: center;
+}
+.toggleSwitchContainer {
+  display: flex;
+  color: #fff;
+}
+
+.child-text {
+  margin: 0;
+  font-size: 16px; /* 初期フォントサイズ */
+}
+
+/* トグルスイッチの見た目 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+  margin-left: 10px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #555;
+  border-radius: 28px;
+  transition: background-color 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+/* ボトムナビの下 */
+.nav-item {
+  background: none;
+  border: none;
+  color: #eee;
+  font-size: 0.9rem;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  flex: 1;
+}
+
+.nav-item.active {
+  color: #f0c674;
+  background-color: #45a049;
+}
+
+/**************************/
+/* キー調整シミュレーション */
+/**************************/
+#referenceSection {
+  margin-top: 20px;
+}
+
+.key-tips {
+  position: fixed;
+  bottom: 110px;
+  left: 0;
+  right: 0;
+  background-color: #222;
+  color: #eee;
+  padding: 1em;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+/* summary 部分の見た目 */
+.key-tips summary {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #f0c674;
+  cursor: pointer;
+  outline: none;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* summary のデフォルト矢印を白く */
+.key-tips summary::-webkit-details-marker {
+  color: #fff;
+}
+
+/* 開閉アニメーション用 */
+.key-tips[open] ul {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.key-tips h3 {
+  margin-bottom: 0.5em;
+  font-size: 1.1rem;
+  color: #f0c674;
+}
+.key-tips ul {
+  list-style: none;
+  padding-left: 0;
+}
+.key-tips li {
+  margin-bottom: 0.5em;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/**************************/
+/* キーの範囲検索 */
+/**************************/
+#piano-container {
+  position: relative;
+}
+
+.piano {
+  position: relative;
+  display: inline-block;
+  padding-top: 0;
+}
+
+.key {
+  position: relative;
+  border: 1px solid #000;
+}
+
+.key.white {
+  width: 150px;
+  height: 35px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  padding-left: 100px;
+}
+
+.key.black {
+  position: absolute;
+  width: 60px;
+  height: 35px;
+  background: #000;
+  border: 1px solid #333;
+  z-index: 2;
+  color: white;
+  text-align: center;
+}
+
+.label-en {
+  font-size: 10px;
+  color: #000;
+}
+
+.label-jp {
+  font-size: 14px;
+  color: #000;
+}
+
+.white.selected {
+  background: #4caf50;
+}
+
+.black.selected {
+  background: #4caf50;
+}
+
+#searchButton {
+  width: 100%;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#searchButton:hover {
+  background-color: #45a049;
+}
+
+#searchBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #45a049;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

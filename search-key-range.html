@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>キーの範囲から検索</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- jQuery UI（CSS + JS）-->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>範囲指定楽曲検索ツール</h1>
+
+      <section class="form-group">
+        <!-- <div class="key-range-block">
+          <label for="manualLow">最低キー：</label>
+          <select id="manualLow"></select>
+        </div>
+
+        <div class="key-range-block">
+          <label for="manualHigh">最高キー：</label>
+          <select id="manualHigh"></select>
+        </div> -->
+
+        <div id="key-selector">
+          <div id="piano-container">
+            <!-- 各鍵盤（白鍵＋黒鍵） -->
+            <div class="key white" data-note="mid1C">ド</div>
+            <div class="key black" data-note="mid1C#">ド#</div>
+            <div class="key white" data-note="mid1D">レ</div>
+            <div class="key black" data-note="mid1D#">レ#</div>
+            <div class="key white" data-note="mid1E">ミ</div>
+            <div class="key white" data-note="mid1F">ファ</div>
+            <div class="key black" data-note="mid1F#">ファ#</div>
+            <div class="key white" data-note="mid1G">ソ</div>
+            <div class="key black" data-note="mid1G#">ソ#</div>
+            <div class="key white" data-note="mid1A">ラ</div>
+            <div class="key black" data-note="mid1A#">ラ#</div>
+            <div class="key white" data-note="mid1B">シ</div>
+            <div class="key white" data-note="mid2C">ド</div>
+            <!-- 必要に応じて続き追加 -->
+          </div>
+
+          <input type="hidden" id="manualLow" />
+          <input type="hidden" id="manualHigh" />
+        </div>
+
+        <button id="manualSearchButton">検索</button>
+      </section>
+
+      <section id="resultSection">
+        <h2 id="resultHeader" style="display: none">検索結果</h2>
+        <ul id="resultList"></ul>
+      </section>
+    </div>
+
+    <!-- ボトムメニュー -->
+    <div class="bottom-nav">
+      <button class="nav-item" data-href="index.html">キー類似曲検索</button>
+      <button class="nav-item" data-href="search-key-range.html">
+        キー範囲検索
+      </button>
+      <button class="nav-item" data-href="key-adjust.html">
+        キー調整シミュレーション
+      </button>
+    </div>
+
+    <script type="module" src="js/search-key-range.js"></script>
+    <script type="module">
+      import { initBottomNav } from "./js/utils.js";
+      initBottomNav();
+    </script>
+  </body>
+</html>
