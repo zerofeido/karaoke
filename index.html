@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>音域類似曲検索</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- jQuery UI（CSS + JS）-->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- Select2 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>音域類似曲検索</h1>
+
+      <section class="form-group">
+        <div class="form-group">
+          <label for="artistSelect">アーティスト名で絞り込み：</label>
+          <select id="artistSelect" style="width: 100%"></select>
+        </div>
+
+        <div class="form-group">
+          <label for="songSelect">曲名：</label>
+          <select id="songSelect" style="width: 100%"></select>
+        </div>
+
+        <!-- 詳細条件トグルボタン -->
+        <button id="toggleDetail">詳細条件 ▾</button>
+
+        <!-- 補正オプション（折りたたみ） -->
+        <div class="adjust-section">
+          <!-- 上限補正 -->
+          <div class="adjust-row">
+            <label for="maxAdjust"
+              >高音が出しやすい時はプラス（＋）<br />出しづらい時はマイナス（－）</label
+            >
+            <div class="adjust-controls">
+              <button class="step-btn" data-target="maxAdjust" data-diff="-1">
+                －
+              </button>
+              <input
+                type="number"
+                id="maxAdjust"
+                class="adjust-input"
+                value="0"
+                readonly
+              />
+              <button class="step-btn" data-target="maxAdjust" data-diff="1">
+                ＋
+              </button>
+            </div>
+          </div>
+
+          <!-- 下限補正 -->
+          <div class="adjust-row">
+            <label for="minAdjust"
+              >低音が出しづらい時はプラス（＋）<br />出しやすい時はマイナス（－）</label
+            >
+            <div class="adjust-controls">
+              <button class="step-btn" data-target="minAdjust" data-diff="-1">
+                －
+              </button>
+              <input
+                type="number"
+                id="minAdjust"
+                class="adjust-input"
+                value="0"
+                readonly
+              />
+              <button class="step-btn" data-target="minAdjust" data-diff="1">
+                ＋
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <button id="searchButton">検索</button>
+      </section>
+
+      <section id="resultSection">
+        <h2 id="resultHeader" style="display: none">検索結果</h2>
+        <ul id="resultList"></ul>
+      </section>
+
+      <!-- コピー用ボタン -->
+      <button id="copyResultsBtn" class="copy-btn" style="display: none">
+        検索結果をコピー
+      </button>
+    </div>
+
+    <!-- ボトムナビ -->
+    <div class="bottomNavContainer">
+      <!-- アンケートリンク + モード切替スイッチ -->
+      <div class="bottomNav bottomNavTop">
+        <div class="survey">
+          <a href="https://forms.gle/zAiUvrQYJP4nxj4BA" target="_blank"
+            >リクエスト</a
+          >
+        </div>
+        <div class="toggleSwitchContainer">
+          <p class="child-text">ライトモード</p>
+          <label class="switch">
+            <input type="checkbox" id="modeSwitch" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bottomNav bottomNavBottom">
+        <button class="nav-item" data-href="index.html">音域類似曲検索</button>
+        <!-- <button class="nav-item" data-href="search-key-range.html">
+        キー範囲検索
+      </button> -->
+        <button class="nav-item" data-href="key-adjust.html">
+          音域調整<br />シミュレーション
+        </button>
+      </div>
+    </div>
+
+    <script type="module" src="js/index.js"></script>
+    <script type="module">
+      import { changeMode, initBottomNav } from "./js/utils.js";
+      changeMode();
+      initBottomNav();
+    </script>
+  </body>
+</html>
