@@ -130,7 +130,7 @@ body.light-mode .nav-item.active {
 
 @media screen and (max-height: 800px) {
   .keyAdjustContainer {
-    margin-bottom: 200px;
+    margin-bottom: 170px;
   }
 }
 
@@ -600,3 +600,4 @@ input:checked + .slider::before {
   border-radius: 4px;
   cursor: pointer;
 }
+
