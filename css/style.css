@@ -120,13 +120,18 @@ body.light-mode .nav-item.active {
 }
 
 /******************/
-
-/* コンテナ */
+/* 全画面共通コンテナ */
 .container {
   max-width: 480px;
   margin: 0 auto;
   padding: 1rem;
   margin-bottom: 110px;
+}
+
+@media screen and (max-height: 800px) {
+  .keyAdjustContainer {
+    margin-bottom: 200px;
+  }
 }
 
 /* カードUI */
