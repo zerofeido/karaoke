@@ -29,7 +29,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>音域類似曲検索</h1>
+      <h1>TuneFinder</h1>
 
       <section class="form-group">
         <div class="form-group">
@@ -43,51 +43,55 @@
         </div>
 
         <!-- 詳細条件トグルボタン -->
-        <button id="toggleDetail">詳細条件 ▾</button>
-
-        <!-- 補正オプション（折りたたみ） -->
-        <div class="adjust-section">
-          <!-- 上限補正 -->
-          <div class="adjust-row">
-            <label for="maxAdjust"
-              >高音が出しやすい時はプラス（＋）<br />出しづらい時はマイナス（－）</label
-            >
-            <div class="adjust-controls">
-              <button class="step-btn" data-target="maxAdjust" data-diff="-1">
-                －
-              </button>
-              <input
-                type="number"
-                id="maxAdjust"
-                class="adjust-input"
-                value="0"
-                readonly
-              />
-              <button class="step-btn" data-target="maxAdjust" data-diff="1">
-                ＋
-              </button>
+        <div class="accordion">
+          <div class="accordion-header">詳細条件 ▼</div>
+          <div class="accordion-content index-accordion">
+            <!-- 上限補正 -->
+            <div class="adjust-row">
+              <label for="maxAdjust">高音調整（半音）</label>
+              <div class="slider-container">
+                <button class="step-btn" data-target="maxAdjust" data-diff="-1">
+                  －
+                </button>
+                <input
+                  type="range"
+                  id="maxAdjust"
+                  min="-12"
+                  max="12"
+                  step="1"
+                  value="0"
+                />
+                <button class="step-btn" data-target="maxAdjust" data-diff="1">
+                  ＋
+                </button>
+              </div>
+              <div class="current-value">
+                現在値: <span id="maxAdjustValue">0</span>
+              </div>
             </div>
-          </div>
 
-          <!-- 下限補正 -->
-          <div class="adjust-row">
-            <label for="minAdjust"
-              >低音が出しづらい時はプラス（＋）<br />出しやすい時はマイナス（－）</label
-            >
-            <div class="adjust-controls">
-              <button class="step-btn" data-target="minAdjust" data-diff="-1">
-                －
-              </button>
-              <input
-                type="number"
-                id="minAdjust"
-                class="adjust-input"
-                value="0"
-                readonly
-              />
-              <button class="step-btn" data-target="minAdjust" data-diff="1">
-                ＋
-              </button>
+            <!-- 下限補正 -->
+            <div class="adjust-row">
+              <label for="minAdjust">低音調整（半音）</label>
+              <div class="slider-container">
+                <button class="step-btn" data-target="minAdjust" data-diff="-1">
+                  －
+                </button>
+                <input
+                  type="range"
+                  id="minAdjust"
+                  min="-12"
+                  max="12"
+                  step="1"
+                  value="0"
+                />
+                <button class="step-btn" data-target="minAdjust" data-diff="1">
+                  ＋
+                </button>
+              </div>
+              <div class="current-value">
+                現在値: <span id="minAdjustValue">0</span>
+              </div>
             </div>
           </div>
         </div>
@@ -125,12 +129,12 @@
       </div>
 
       <div class="bottomNav bottomNavBottom">
-        <button class="nav-item" data-href="index.html">音域類似曲検索</button>
+        <button class="nav-item" data-href="index.html">TuneFinder</button>
         <!-- <button class="nav-item" data-href="search-key-range.html">
         キー範囲検索
       </button> -->
         <button class="nav-item" data-href="key-adjust.html">
-          音域調整<br />シミュレーション
+          KaraokeTuneUp
         </button>
       </div>
     </div>
