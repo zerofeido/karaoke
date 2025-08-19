@@ -162,27 +162,49 @@ $(function () {
     // 楽曲変更時に補正値をリセットする
     $("#maxAdjust").val(0);
     $("#minAdjust").val(0);
+
+    // 表示反映
+    updateValue("maxAdjust");
+    updateValue("minAdjust");
   });
 
-  // 詳細条件の表示・非表示切り替え
-  $("#toggleDetail").on("click", function () {
-    $(".adjust-section").toggleClass("open");
+  // アコーディオンメニュー
+  $(".accordion-header").on("click", function () {
+    const content = $(this).next(".accordion-content");
+    content.toggleClass("open");
 
-    // ボタン表示を切り替え（矢印）
-    const isOpen = $(".adjust-section").hasClass("open");
-    $(this).text(isOpen ? "詳細条件 ▴" : "詳細条件 ▾");
+    // ▼ / ▲ 切り替え
+    if (content.hasClass("open")) {
+      $(this).text("詳細条件 ▲");
+    } else {
+      $(this).text("詳細条件 ▼");
+    }
   });
 
-  // ステップボタンのイベント（＋/－）
+  // スライダーの値をラベルに表示する
+  function updateValue(id) {
+    let value = $("#" + id).val();
+    $("#" + id + "Value").text(value);
+  }
+
+  // スライダー操作時
+  $("#maxAdjust, #minAdjust").on("input", function () {
+    updateValue(this.id);
+  });
+
+  // ＋－ボタン操作時
   $(".step-btn").on("click", function () {
-    const targetId = $(this).data("target");
-    const diff = parseInt($(this).data("diff"), 10);
-    const $input = $("#" + targetId);
-    const currentValue = parseInt($input.val(), 10);
+    let target = $(this).data("target");
+    let diff = parseInt($(this).data("diff"));
+    let $slider = $("#" + target);
 
-    // 値を制限
-    const newValue = Math.max(-20, Math.min(15, currentValue + diff));
-    $input.val(newValue);
+    let min = parseInt($slider.attr("min"));
+    let max = parseInt($slider.attr("max"));
+    let current = parseInt($slider.val());
+
+    let newValue = Math.min(Math.max(current + diff, min), max);
+    $slider.val(newValue);
+    updateValue(target);
   });
 
   // 検索実行
