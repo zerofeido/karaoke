@@ -86,6 +86,11 @@ body.light-mode span .select2-selection.select2-selection--single {
   height: 100%;
 }
 
+/* アコーディオンメニュー */
+body.light-mode .accordion-header {
+  color: #333;
+}
+
 /* チップス */
 body.light-mode .key-tips {
   background-color: #f1f1f1;
@@ -119,13 +124,17 @@ body.light-mode .nav-item.active {
   background-color: #45a049;
 }
 
+/*---------------------------*/
+/* ライトモード終わり */
+/*---------------------------*/
+
 /******************/
 /* 全画面共通コンテナ */
 .container {
   max-width: 480px;
   margin: 0 auto;
   padding: 1rem;
-  margin-bottom: 110px;
+  margin-bottom: 90px;
 }
 
 @media screen and (max-height: 800px) {
@@ -350,6 +359,84 @@ span.select2-container--default
   background-color: #555555;
 }
 
+/* アコーディオンメニュー */
+.accordion {
+  /* border: 1px solid #444; */
+  border-radius: 6px;
+  /* margin-bottom: 12px; */
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+  /* background-color: #2b2b2b; */
+}
+
+.accordion-header {
+  /* padding: 12px; */
+  /* font-weight: bold; */
+  cursor: pointer;
+  /* background-color: #333; */
+  color: #fff;
+  transition: background-color 0.3s;
+}
+.accordion-header:hover {
+  /* background-color: #444; */
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  /* padding: 0 12px; */
+}
+
+.accordion-content.open {
+  max-height: 215px; /* セレクトボックスの高さに合わせ調整 */
+  /* padding: 12px; */
+}
+
+/* indexのみ */
+.index-accordion.accordion-content.open {
+  margin-top: 0.3rem;
+  padding: 0.6rem;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+}
+
+/* スライダー */
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="range"] {
+  flex: 1;
+  accent-color: #007bff; /* スライダーの色 */
+}
+
+.step-btn {
+  background: #a1a1a1;
+  border: none;
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-btn:hover {
+  background: #ddd;
+}
+
+.current-value {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #fff;
+  text-align: center;
+}
+
 /* アンケート */
 .survey a {
   color: white;
@@ -460,7 +547,7 @@ input:checked + .slider::before {
 
 .key-tips {
   position: fixed;
-  bottom: 110px;
+  bottom: 88px;
   left: 0;
   right: 0;
   background-color: #222;
@@ -468,7 +555,6 @@ input:checked + .slider::before {
   padding: 1em;
   border-radius: 12px;
   font-size: 0.95rem;
-  line-height: 1.5;
 }
 /* summary 部分の見た目 */
 .key-tips summary {
@@ -501,11 +587,7 @@ input:checked + .slider::before {
     transform: translateY(0);
   }
 }
-.key-tips h3 {
-  margin-bottom: 0.5em;
-  font-size: 1.1rem;
-  color: #f0c674;
-}
+
 .key-tips ul {
   list-style: none;
   padding-left: 0;
@@ -600,4 +682,3 @@ input:checked + .slider::before {
   border-radius: 4px;
   cursor: pointer;
 }
-
