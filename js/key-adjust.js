@@ -106,6 +106,19 @@ $(function () {
     });
   });
 
+  // アコーディオンメニュー
+  $(".accordion-header").on("click", function () {
+    const content = $(this).next(".accordion-content");
+    content.toggleClass("open");
+
+    // ▼ / ▲ 切り替え
+    if (content.hasClass("open")) {
+      $(this).text("アーティスト名で絞り込み ▲");
+    } else {
+      $(this).text("アーティスト名で絞り込み ▼");
+    }
+  });
+
   // 検索
   $("#checkButton").on("click", function () {
     const targetTitle = $("#targetSong").val();
