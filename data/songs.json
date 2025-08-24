@@ -4,14 +4,21 @@
     "artist": "Kanaria",
     "keyLow": "mid2A",
     "keyHigh": "hiF#",
-    "tag": [],
-    "youtube": "https://www.youtube.com/watch?v=example"
+    "utaite": [
+      {
+        "name": "",
+        "key": ""
+      }
+    ],
+    "youtube": "https://www.youtube.com/watch?v=example",
+    "spotify": "https://www.youtube.com/watch?v=example"
   },
   {
     "title": "愛言葉",
     "artist": "DECO*27",
     "keyLow": "mid2B",
     "keyHigh": "hiD",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example",
     "spotify": "https://www.youtube.com/watch?v=example"
   },
@@ -20,6 +27,24 @@
     "artist": "DECO*27",
     "keyLow": "mid1G",
     "keyHigh": "hiD",
+    "utaite": [
+      {
+        "name": "そらる",
+        "key": "-2"
+      },
+      {
+        "name": "96猫",
+        "key": "0"
+      },
+      {
+        "name": "ゆきむら。",
+        "key": "-3"
+      },
+      {
+        "name": "Sou",
+        "key": "-4"
+      }
+    ],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -27,6 +52,24 @@
     "artist": "DECO*27",
     "keyLow": "mid1G#",
     "keyHigh": "hiE",
+    "utaite": [
+      {
+        "name": "そらる",
+        "key": "-2"
+      },
+      {
+        "name": "96猫",
+        "key": "0"
+      },
+      {
+        "name": "ゆきむら。",
+        "key": "-3"
+      },
+      {
+        "name": "Sou",
+        "key": "-4"
+      }
+    ],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -34,6 +77,7 @@
     "artist": "DECO*27",
     "keyLow": "mid1G#",
     "keyHigh": "hiF",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -41,6 +85,7 @@
     "artist": "きくお",
     "keyLow": "mid2A#",
     "keyHigh": "hiG#",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -48,6 +93,7 @@
     "artist": "ねじ式",
     "keyLow": "mid2D#",
     "keyHigh": "hiF",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -55,6 +101,7 @@
     "artist": "アメリカ民謡研究会",
     "keyLow": "hiG#",
     "keyHigh": "hiA#",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -62,6 +109,7 @@
     "artist": "とあ",
     "keyLow": "mid1G#",
     "keyHigh": "hiF#",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -69,6 +117,7 @@
     "artist": "Kanaria",
     "keyLow": "mid2A",
     "keyHigh": "hiG",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -76,6 +125,7 @@
     "artist": "れるりり",
     "keyLow": "mid2C#",
     "keyHigh": "hiD#",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -83,6 +133,7 @@
     "artist": "電ポルP",
     "keyLow": "mid2D",
     "keyHigh": "hiF#",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -90,6 +141,7 @@
     "artist": "DECO*27",
     "keyLow": "mid2B",
     "keyHigh": "hiC",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=example"
   },
   {
@@ -97,6 +149,7 @@
     "artist": "164 feat. GUMI",
     "keyLow": "mid2A",
     "keyHigh": "hiG#",
+    "utaite": [],
     "youtube": "https://www.youtube.com/watch?v=2-zPY0vrpjQ"
   }
 ]
