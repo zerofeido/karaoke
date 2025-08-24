@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>歌い手キー</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- jQuery UI（CSS + JS）-->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- Select2 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+  </head>
+  <body>
+    <div class="pageTitleContainer">
+      <h1 class="pageTitle">UtaiteTune</h1>
+    </div>
+
+    <div class="keyAdjustContainer container">
+      <section>
+        <!-- 歌いたい曲 -->
+        <section id="targetSection">
+          <div class="accordion">
+            <div class="accordion-header">アーティスト名で絞り込み ▼</div>
+            <div class="accordion-content">
+              <div class="form-group">
+                <select id="targetArtist"></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="targetSong">歌いたい曲：</label>
+            <select type="text" id="targetSong" name="targetSong"></select>
+          </div>
+        </section>
+
+        <!-- 歌える曲 -->
+        <section id="utaiteSection">
+          <div class="form-group">
+            <label for="utaite">歌い手：</label>
+            <select type="text" id="utaite" name="utaite"></select>
+          </div>
+        </section>
+
+        <button class="searchButton" type="button">
+          <i class="fa-solid fa-magnifying-glass"></i> 歌い手のキーを調べる
+        </button>
+      </section>
+
+      <section id="resultSection" style="display: none">
+        <div id="resultHeader">
+          <h2>調整キー</h2>
+        </div>
+        <p id="result"></p>
+      </section>
+    </div>
+
+    <!-- ボトムナビ -->
+    <div class="bottomNavContainer">
+      <!-- アンケートリンク + モード切替スイッチ -->
+      <div class="bottomNav bottomNavTop">
+        <div class="survey bottomNavLinkWraper">
+          <a
+            class="bottomNavIcon"
+            href="https://forms.gle/zAiUvrQYJP4nxj4BA"
+            target="_blank"
+            ><i class="fa-regular fa-comment-dots"></i>
+            <!-- リクエスト -->
+          </a>
+        </div>
+        <div class="ofuse bottomNavLinkWraper">
+          <a
+            class="bottomNavIcon"
+            href="https://ofuse.me/zerofeido"
+            target="_blank"
+            ><i class="fa-solid fa-hand-holding-heart"></i>
+            <!-- お布施 -->
+          </a>
+        </div>
+        <div class="toggleSwitchContainer">
+          <p class="bottomNavIcon">
+            <i class="fa-regular fa-lightbulb"></i>
+            <!-- モード切替 -->
+          </p>
+          <label class="switch">
+            <input type="checkbox" id="modeSwitch" />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bottomNav bottomNavBottom">
+        <button class="nav-item" data-href="index.html">TuneFinder</button>
+        <!-- <button class="nav-item" data-href="search-key-range.html">
+        キー範囲検索
+      </button> -->
+        <button class="nav-item" data-href="key-adjust.html">
+          KaraokeTuneUp
+        </button>
+        <button class="nav-item" data-href="utaite-tune.html">
+          UtaiteTune
+        </button>
+      </div>
+    </div>
+
+    <script type="module" src="js/utaite-tune.js"></script>
+    <script type="module">
+      import { changeMode, initBottomNav } from "./js/utils.js";
+      changeMode();
+      initBottomNav();
+    </script>
+  </body>
+</html>
