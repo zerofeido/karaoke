@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>音域調整シミュレーション</title>
     <link rel="stylesheet" href="css/style.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- jQuery UI（CSS + JS）-->
@@ -22,9 +27,11 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   </head>
   <body>
-    <div class="keyAdjustContainer container">
-      <h1>KaraokeTuneUp</h1>
+    <div class="pageTitleContainer">
+      <h1 class="pageTitle">KaraokeTuneUp</h1>
+    </div>
 
+    <div class="keyAdjustContainer container">
       <section>
         <!-- 歌いたい曲 -->
         <section id="targetSection">
@@ -39,12 +46,7 @@
 
           <div class="form-group">
             <label for="targetSong">歌いたい曲：</label>
-            <select
-              type="text"
-              id="targetSong"
-              name="targetSong"
-              placeholder="曲名を入力してください"
-            ></select>
+            <select type="text" id="targetSong" name="targetSong"></select>
           </div>
         </section>
 
@@ -65,16 +67,19 @@
               type="text"
               id="referenceSong"
               name="referenceSong"
-              placeholder="曲名を入力してください"
             ></select>
           </div>
         </section>
 
-        <button id="checkButton" type="button">適正キーを調べる</button>
+        <button class="searchButton" type="button">
+          <i class="fa-solid fa-magnifying-glass"></i> 適正キーを調べる
+        </button>
       </section>
 
       <section id="resultSection" style="display: none">
-        <h2>推奨キー変更幅</h2>
+        <div id="resultHeader">
+          <h2>推奨キー変更幅</h2>
+        </div>
         <p id="recommendationText"></p>
       </section>
     </div>
@@ -96,13 +101,29 @@
     <div class="bottomNavContainer">
       <!-- アンケートリンク + モード切替スイッチ -->
       <div class="bottomNav bottomNavTop">
-        <div class="survey">
-          <a href="https://forms.gle/zAiUvrQYJP4nxj4BA" target="_blank"
-            >リクエスト</a
-          >
+        <div class="survey bottomNavLinkWraper">
+          <a
+            class="bottomNavIcon"
+            href="https://forms.gle/zAiUvrQYJP4nxj4BA"
+            target="_blank"
+            ><i class="fa-regular fa-comment-dots"></i>
+            <!-- リクエスト -->
+          </a>
+        </div>
+        <div class="ofuse bottomNavLinkWraper">
+          <a
+            class="bottomNavIcon"
+            href="https://ofuse.me/zerofeido"
+            target="_blank"
+            ><i class="fa-solid fa-hand-holding-heart"></i>
+            <!-- お布施 -->
+          </a>
         </div>
         <div class="toggleSwitchContainer">
-          <p class="child-text">ライトモード</p>
+          <p class="bottomNavIcon">
+            <i class="fa-regular fa-lightbulb"></i>
+            <!-- モード切替 -->
+          </p>
           <label class="switch">
             <input type="checkbox" id="modeSwitch" />
             <span class="slider"></span>
@@ -117,6 +138,9 @@
       </button> -->
         <button class="nav-item" data-href="key-adjust.html">
           KaraokeTuneUp
+        </button>
+        <button class="nav-item" data-href="utaite-tune.html">
+          UtaiteTune
         </button>
       </div>
     </div>
