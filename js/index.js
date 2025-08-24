@@ -27,11 +27,30 @@ function getSimilarRangeSongs(
   });
 }
 
+// レンジスライダーの描画
+const activeColor = "#4ec6ff";
+const inactiveColor = "#f5f5f5";
+
+function updateSliderBackground(slider) {
+  const value = slider.value;
+  const min = slider.min ? slider.min : 0;
+  const max = slider.max ? slider.max : 100;
+  const ratio = ((value - min) / (max - min)) * 100;
+
+  $(slider).css(
+    "background",
+    `linear-gradient(90deg, ${activeColor} ${ratio}%, ${inactiveColor} ${ratio}%)`
+  );
+
+  // ラベルを再描画
+  const id = $(slider).attr("id");
+  $("#" + id + "Value").text(value);
+}
+
 // 検索結果描画
 function renderResults(songs) {
   // 非表示を表示に変更
-  $("#resultHeader").show();
-  $("#copyResultsBtn").show();
+  $("#resultSection").show();
 
   const $list = $("#resultList");
   $list.empty();
@@ -43,15 +62,21 @@ function renderResults(songs) {
   }
 
   songs.forEach((song) => {
-    const $item = $("<li>");
-    const $title = $("<span>").text(
-      `${song.title}（${song.artist}） ${song.keyLow}〜${song.keyHigh}`
+    const $item = $("<li>").addClass("result-item");
+
+    // 左側：曲名・アーティスト名
+    const $info = $("<div>").addClass("result-info");
+    const $title = $("<span>").addClass("result-title").text(song.title);
+    const $artist = $("<span>").addClass("result-artist").text(song.artist);
+
+    $info.append($title).append($artist);
+
+    // 右側：キーやリンク
+    const $extra = $("<div>").addClass("result-extra");
+    $extra.append(
+      $("<span>").addClass("key").text(`${song.keyLow}〜${song.keyHigh}`)
     );
 
-    // アイコンリンク格納
-    const $icons = $("<span>").css("margin-left", "6px");
-
-    // YouTubeリンク
     if (song.youtube) {
       const $yt = $("<a>")
         .attr("href", song.youtube)
@@ -60,25 +85,62 @@ function renderResults(songs) {
           '<i class="fa-brands fa-youtube" style="color:#ff6083; font-size:18px;"></i>'
         )
         .css("text-decoration", "none");
-      $icons.append($yt);
+      $extra.append($yt);
     }
 
-    // Spotifyリンク
     if (song.spotify) {
       const $sp = $("<a>")
         .attr("href", song.spotify)
         .attr("target", "_blank")
         .html(
-          '<i class="fab fa-spotify" style="color:#1DB954; font-size:18px; margin-left:8px;"></i>'
+          '<i class="fab fa-spotify" style="color:#1DB954; font-size:18px; "></i>'
         )
         .css("text-decoration", "none");
-      $icons.append($sp);
+      $extra.append($sp);
     }
 
-    // タイトルとアイコンを li に追加
-    $item.append($title).append($icons);
+    $item.append($info).append($extra);
     $list.append($item);
+
+    // const $item = $("<li>");
+    // const $title = $("<span>").text(
+    //   `${song.title}（${song.artist}） ${song.keyLow}〜${song.keyHigh}`
+    // );
+
+    // // アイコンリンク格納
+    // const $icons = $("<span>").css("margin-left", "6px");
+
+    // // YouTubeリンク
+    // if (song.youtube) {
+    //   const $yt = $("<a>")
+    //     .attr("href", song.youtube)
+    //     .attr("target", "_blank")
+    //     .html(
+    //       '<i class="fa-brands fa-youtube" style="color:#ff6083; font-size:18px;"></i>'
+    //     )
+    //     .css("text-decoration", "none");
+    //   $icons.append($yt);
+    // }
+
+    // // Spotifyリンク
+    // if (song.spotify) {
+    //   const $sp = $("<a>")
+    //     .attr("href", song.spotify)
+    //     .attr("target", "_blank")
+    //     .html(
+    //       '<i class="fab fa-spotify" style="color:#1DB954; font-size:18px; margin-left:8px;"></i>'
+    //     )
+    //     .css("text-decoration", "none");
+    //   $icons.append($sp);
+    // }
+
+    // // タイトルとアイコンを li に追加
+    // $item.append($title).append($icons);
+    // $list.append($item);
   });
+
+  // 検索結果件数表示
+  // $(".resultCount").text(`(${songs.length}件)`);
 }
 
 // 曲名絞り込み
@@ -105,6 +167,13 @@ $(function () {
   let artists = [];
   let titles = [];
 
+  const $artistSelect = $("#artistSelect");
+  const $songSelect = $("#songSelect");
+
+  // レンジスライダー
+  const $maxAdjust = $("#maxAdjust");
+  const $minAdjust = $("#minAdjust");
+
   $.getJSON("./data/songs.json", function (data) {
     allSongs = data;
 
@@ -118,6 +187,10 @@ $(function () {
 
     const $artistSelect = $("#artistSelect");
     const $songSelect = $("#songSelect");
+
+    // レンジスライダー
+    const $maxAdjust = $("#maxAdjust");
+    const $minAdjust = $("#minAdjust");
 
     // 初期にすべて追加
     $artistSelect.append($("<option>").text("すべて").val(""));
@@ -160,12 +233,8 @@ $(function () {
   // 楽曲変更
   $("#songSelect").on("change", function () {
     // 楽曲変更時に補正値をリセットする
-    $("#maxAdjust").val(0);
-    $("#minAdjust").val(0);
-
-    // 表示反映
-    updateValue("maxAdjust");
-    updateValue("minAdjust");
+    $("#maxAdjust").val(0).trigger("input");
+    $("#minAdjust").val(0).trigger("input");
   });
 
   // アコーディオンメニュー
@@ -181,15 +250,14 @@ $(function () {
     }
   });
 
-  // スライダーの値をラベルに表示する
-  function updateValue(id) {
-    let value = $("#" + id).val();
-    $("#" + id + "Value").text(value);
-  }
-
-  // スライダー操作時
+  // イベント登録
   $("#maxAdjust, #minAdjust").on("input", function () {
-    updateValue(this.id);
+    updateSliderBackground(this);
+  });
+
+  // 初期描画時に同期
+  $("#maxAdjust, #minAdjust").each(function () {
+    updateSliderBackground(this);
   });
 
   // ＋－ボタン操作時
@@ -204,11 +272,11 @@ $(function () {
 
     let newValue = Math.min(Math.max(current + diff, min), max);
     $slider.val(newValue);
-    updateValue(target);
+    $slider.trigger("input");
   });
 
   // 検索実行
-  $("#searchButton").on("click", function () {
+  $(".searchButton").on("click", function () {
     const selectedTitle = $("#songSelect").val();
     if (!selectedTitle) return;
 
