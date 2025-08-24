@@ -120,7 +120,7 @@ $(function () {
   });
 
   // 検索
-  $("#checkButton").on("click", function () {
+  $(".searchButton").on("click", function () {
     const targetTitle = $("#targetSong").val();
     const referenceTitle = $("#referenceSong").val();
 
@@ -159,8 +159,15 @@ $(function () {
       $(this).removeClass("open");
     } else {
       // 開く処理
-      $container.css("margin-bottom", "333px");
       $(this).addClass("open");
+
+      // 描画反映後に高さ取得
+      requestAnimationFrame(() => {
+        // tipsの高さ + ボトムメニューの高さ
+        const addMargin = $(this).outerHeight(true) + 90;
+
+        $container.css("margin-bottom", addMargin + "px");
+      });
     }
   });
 
