@@ -26,18 +26,22 @@
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- google font -->
   </head>
   <body>
-    <div class="container">
-      <h1>TuneFinder</h1>
+    <div class="pageTitleContainer">
+      <h1 class="pageTitle">TuneFinder</h1>
+    </div>
 
-      <section class="form-group">
+    <div class="container">
+      <section class="form-group marginTop15">
         <div class="form-group">
           <label for="artistSelect">アーティスト名で絞り込み：</label>
           <select id="artistSelect" style="width: 100%"></select>
         </div>
 
-        <div class="form-group">
+        <div class="index-song form-group">
           <label for="songSelect">曲名：</label>
           <select id="songSelect" style="width: 100%"></select>
         </div>
@@ -49,6 +53,12 @@
             <!-- 上限補正 -->
             <div class="adjust-row">
               <label for="maxAdjust">高音調整（半音）</label>
+              <!-- ラベル -->
+              <div class="rangeLabels">
+                <span class="rangeLabel left">狭める</span>
+                <span class="rangeLabel right">広げる</span>
+              </div>
+              <!-- レンジスライダー -->
               <div class="slider-container">
                 <button class="step-btn" data-target="maxAdjust" data-diff="-1">
                   －
@@ -60,6 +70,7 @@
                   max="12"
                   step="1"
                   value="0"
+                  class="inputRange"
                 />
                 <button class="step-btn" data-target="maxAdjust" data-diff="1">
                   ＋
@@ -73,6 +84,12 @@
             <!-- 下限補正 -->
             <div class="adjust-row">
               <label for="minAdjust">低音調整（半音）</label>
+              <!-- ラベル -->
+              <div class="rangeLabels">
+                <span class="rangeLabel left">広げる</span>
+                <span class="rangeLabel right">狭める</span>
+              </div>
+              <!-- レンジスライダー -->
               <div class="slider-container">
                 <button class="step-btn" data-target="minAdjust" data-diff="-1">
                   －
@@ -84,6 +101,7 @@
                   max="12"
                   step="1"
                   value="0"
+                  class="inputRange"
                 />
                 <button class="step-btn" data-target="minAdjust" data-diff="1">
                   ＋
@@ -96,31 +114,52 @@
           </div>
         </div>
 
-        <button id="searchButton">検索</button>
+        <button class="searchButton">
+          <i class="fa-solid fa-magnifying-glass"></i> 類似楽曲を検索
+        </button>
       </section>
 
       <section id="resultSection">
-        <h2 id="resultHeader" style="display: none">検索結果</h2>
+        <div id="resultHeader">
+          <h2>検索結果</h2>
+          <!-- <span class="resultCount">(0件)</span> -->
+        </div>
         <ul id="resultList"></ul>
-      </section>
 
-      <!-- コピー用ボタン -->
-      <button id="copyResultsBtn" class="copy-btn" style="display: none">
-        検索結果をコピー
-      </button>
+        <!-- コピー用ボタン -->
+        <button id="copyResultsBtn" class="copy-btn">
+          <i class="fa-solid fa-copy"></i> 検索結果をコピー
+        </button>
+      </section>
     </div>
 
     <!-- ボトムナビ -->
     <div class="bottomNavContainer">
       <!-- アンケートリンク + モード切替スイッチ -->
       <div class="bottomNav bottomNavTop">
-        <div class="survey">
-          <a href="https://forms.gle/zAiUvrQYJP4nxj4BA" target="_blank"
-            >リクエスト</a
-          >
+        <div class="survey bottomNavLinkWraper">
+          <a
+            class="bottomNavIcon"
+            href="https://forms.gle/zAiUvrQYJP4nxj4BA"
+            target="_blank"
+            ><i class="fa-regular fa-comment-dots"></i>
+            <!-- リクエスト -->
+          </a>
+        </div>
+        <div class="ofuse bottomNavLinkWraper">
+          <a
+            class="bottomNavIcon"
+            href="https://ofuse.me/zerofeido"
+            target="_blank"
+            ><i class="fa-solid fa-hand-holding-heart"></i>
+            <!-- お布施 -->
+          </a>
         </div>
         <div class="toggleSwitchContainer">
-          <p class="child-text">ライトモード</p>
+          <p class="bottomNavIcon">
+            <i class="fa-regular fa-lightbulb"></i>
+            <!-- モード切替 -->
+          </p>
           <label class="switch">
             <input type="checkbox" id="modeSwitch" />
             <span class="slider"></span>
@@ -135,6 +174,9 @@
       </button> -->
         <button class="nav-item" data-href="key-adjust.html">
           KaraokeTuneUp
+        </button>
+        <button class="nav-item" data-href="utaite-tune.html">
+          UtaiteTune
         </button>
       </div>
     </div>
