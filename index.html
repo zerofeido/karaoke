@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>音域類似曲検索</title>
+    <title>TuneFinder</title>
     <link rel="stylesheet" href="css/style.css" />
     <!-- Font Awesome -->
     <link
@@ -32,6 +32,7 @@
   <body>
     <div class="pageTitleContainer">
       <h1 class="pageTitle">TuneFinder</h1>
+      <button id="helpBtn" class="helpBtn">？</button>
     </div>
 
     <div class="container">
@@ -42,7 +43,7 @@
         </div>
 
         <div class="index-song form-group">
-          <label for="songSelect">曲名：</label>
+          <label for="songSelect">歌いやすい曲名：</label>
           <select id="songSelect" style="width: 100%"></select>
         </div>
 
@@ -55,8 +56,8 @@
               <label for="maxAdjust">高音調整（半音）</label>
               <!-- ラベル -->
               <div class="rangeLabels">
-                <span class="rangeLabel left">狭める</span>
-                <span class="rangeLabel right">広げる</span>
+                <span class="rangeLabel left">下げる</span>
+                <span class="rangeLabel right">上げる</span>
               </div>
               <!-- レンジスライダー -->
               <div class="slider-container">
@@ -86,8 +87,8 @@
               <label for="minAdjust">低音調整（半音）</label>
               <!-- ラベル -->
               <div class="rangeLabels">
-                <span class="rangeLabel left">広げる</span>
-                <span class="rangeLabel right">狭める</span>
+                <span class="rangeLabel left">下げる</span>
+                <span class="rangeLabel right">上げる</span>
               </div>
               <!-- レンジスライダー -->
               <div class="slider-container">
@@ -115,7 +116,7 @@
         </div>
 
         <button class="searchButton">
-          <i class="fa-solid fa-magnifying-glass"></i> 類似楽曲を検索
+          <i class="fa-solid fa-magnifying-glass"></i> 歌いやすい楽曲を検索
         </button>
       </section>
 
@@ -173,11 +174,61 @@
         キー範囲検索
       </button> -->
         <button class="nav-item" data-href="key-adjust.html">
-          KaraokeTuneUp
+          KaraokeTune
         </button>
         <button class="nav-item" data-href="utaite-tune.html">
           UtaiteTune
         </button>
+      </div>
+    </div>
+
+    <!-- 説明モーダル -->
+    <div id="helpModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <div class="modalTitle">
+          <h2>🎵 歌いやすい楽曲を見つけよう</h2>
+        </div>
+        <div class="modalTextArea">
+          <div class="modalStep">
+            <span class="modalStepNumber">1</span>
+            <span class="modalStepText"
+              >アーティスト名を入力または選択で絞り込み</span
+            >
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">2</span>
+            <span class="modalStepText"
+              >歌いやすい曲を入力または選択<span class="textRed"> *</span></span
+            >
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">3</span>
+            <span class="modalStepText"
+              >【詳細条件】<br />
+              高音調整：歌いやすい曲を基本として、高音がもっと出るなら調整を<b
+                >上げる</b
+              ><br /><br />
+              低音調整：歌いやすい曲を基本として、低音がもっと出るなら調整を<b
+                >下げる</b
+              >
+            </span>
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">4</span>
+            <span class="modalStepText">歌いやすい楽曲を検索ボタン押下</span>
+          </div>
+
+          <div class="modalStepEnd">
+            「<span class="textRed">*</span>」は入力必須項目
+          </div>
+          <div class="modalStepAnime">
+            <video autoplay muted playsinline loop>
+              <source src="videos/猫耳web透過.webm" type="video/mp4" />
+              <p>お使いのブラウザは動画に対応していません。</p>
+            </video>
+          </div>
+        </div>
       </div>
     </div>
 
