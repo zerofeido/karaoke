@@ -90,24 +90,20 @@ function changeMode() {
         localStorage.setItem("mode", "dark");
       }
     });
-
-    // $("#modeSwitch").on("change", function () {
-    //   console.log("モード切替");
-    //   if ($(this).is(":checked")) {
-    //     $("body").addClass("light-mode");
-    //     // $("body").addClass("dark-mode");
-    //   } else {
-    //     $("body").removeClass("light-mode");
-    //     // $("body").removeClass("dark-mode");
-    //   }
-    // });
   });
 }
 
 // ボトムナビ(ページ切替)
 function initBottomNav() {
   $(document).ready(function () {
-    const currentPage = window.location.pathname.split("/").pop();
+    let currentPage = window.location.pathname.split("/").pop();
+    console.log("currentPage", currentPage);
+
+    // 拡張子がある場合は削除
+    currentPage = currentPage.replace(/\.html$/, "");
+
+    // ルート（空文字）の場合は index とする
+    if (!currentPage) currentPage = "index";
 
     $(".nav-item").each(function () {
       if ($(this).data("href") === currentPage) {
@@ -120,7 +116,7 @@ function initBottomNav() {
       const href = $(this).data("href");
       if (href && href !== currentPage) {
         // ページ切替
-        window.location.href = href;
+        window.location.href = href + ".html";
       }
     });
   });
