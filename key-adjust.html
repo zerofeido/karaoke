@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>音域調整シミュレーション</title>
+    <title>KaraokeTune</title>
     <link rel="stylesheet" href="css/style.css" />
     <!-- Font Awesome -->
     <link
@@ -28,7 +28,8 @@
   </head>
   <body>
     <div class="pageTitleContainer">
-      <h1 class="pageTitle">KaraokeTuneUp</h1>
+      <h1 class="pageTitle">KaraokeTune</h1>
+      <button id="helpBtn" class="helpBtn">？</button>
     </div>
 
     <div class="keyAdjustContainer container">
@@ -80,7 +81,7 @@
         <div id="resultHeader">
           <h2>推奨キー変更幅</h2>
         </div>
-        <p id="recommendationText"></p>
+        <p id="result"></p>
       </section>
     </div>
 
@@ -88,10 +89,10 @@
       <summary>🎤 キー調整のヒント</summary>
       <ul>
         <li>
-          👨 男性が女性曲を歌う場合 → <strong>オクターブ下げる（-12）</strong>
+          男性が女性曲を歌う場合 → <strong>オクターブ下げる（-12）</strong>
         </li>
         <li>
-          👩 女性が男性曲を歌う場合 → <strong>オクターブ上げる（+12）</strong>
+          女性が男性曲を歌う場合 → <strong>オクターブ上げる（+12）</strong>
         </li>
         <li>🎶 キーを±1ずつ調整しながら、自分に合う音域を探してみましょう！</li>
       </ul>
@@ -137,11 +138,61 @@
         キー範囲検索
       </button> -->
         <button class="nav-item" data-href="key-adjust.html">
-          KaraokeTuneUp
+          KaraokeTune
         </button>
         <button class="nav-item" data-href="utaite-tune.html">
           UtaiteTune
         </button>
+      </div>
+    </div>
+
+    <!-- 説明モーダル -->
+    <div id="helpModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <div class="modalTitle">
+          <h2>🎵 歌いやすいキーを見つけよう</h2>
+        </div>
+        <div class="modalTextArea">
+          <div class="modalStep">
+            <span class="modalStepNumber">1</span>
+            <span class="modalStepText"
+              >歌いたい曲のアーティスト名を入力または選択で絞り込み</span
+            >
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">2</span>
+            <span class="modalStepText"
+              >歌いたい曲を入力または選択<span class="textRed"> *</span></span
+            >
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">3</span>
+            <span class="modalStepText"
+              >歌える曲のアーティスト名を入力または選択で絞り込み</span
+            >
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">4</span>
+            <span class="modalStepText"
+              >歌える曲を入力または選択<span class="textRed"> *</span></span
+            >
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">5</span>
+            <span class="modalStepText">適正キーを調べるボタン押下</span>
+          </div>
+
+          <div class="modalStepEnd">
+            「<span class="textRed"> *</span>」は入力必須項目
+          </div>
+          <div class="modalStepAnime">
+            <video autoplay muted playsinline loop>
+              <source src="videos/猫耳web透過.webm" type="video/mp4" />
+              <p>お使いのブラウザは動画に対応していません。</p>
+            </video>
+          </div>
+        </div>
       </div>
     </div>
 
