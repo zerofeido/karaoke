@@ -172,7 +172,14 @@ $(function () {
       return;
     }
 
-    $("#result").text(`${utaiteInfo.name}さんの調整キー： ${utaiteInfo.key}`);
+    // 色の決定
+    let className = "neutralText"; // ±0
+    if (utaiteInfo.key > 0) className = "plusText"; // プラス値
+    if (utaiteInfo.key < 0) className = "minusText"; // マイナス値
+
+    $("#result").html(
+      `${utaiteInfo.name}さんの調整キー： <span id="resultText" class="${className}">${utaiteInfo.key}</span>`
+    );
 
     // 推奨結果セクションを表示
     $("#resultSection").show();
@@ -205,5 +212,15 @@ $(function () {
     // セクションの表示切り替え
     $(".section").hide();
     $(targetSelector).show();
+  });
+
+  // jQueryでモーダル制御
+  $("#helpBtn").on("click", function () {
+    $("#helpModal").fadeIn();
+  });
+  $("#closeModal, #helpModal").on("click", function (e) {
+    if (e.target.id === "helpModal" || e.target.id === "closeModal") {
+      $("#helpModal").fadeOut();
+    }
   });
 });
