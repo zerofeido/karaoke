@@ -56,13 +56,23 @@ function renderResults(songs) {
   $list.empty();
 
   if (songs.length === 0) {
-    $list.append("<li>該当する曲が見つかりませんでした</li>");
+    $list.append(
+      "<li class='result-item'>該当する曲が見つかりませんでした</li>"
+    );
     $("#copyResultsBtn").hide();
     return;
   }
 
   songs.forEach((song) => {
     const $item = $("<li>").addClass("result-item");
+
+    // 表示領域の概要
+    /*
+     * ---------------------------------------------------
+     * タイトル
+     * アーティスト  アイコン(youtube等)   キー（音階）
+     * ---------------------------------------------------
+     */
 
     // 左側：曲名・アーティスト名
     const $info = $("<div>").addClass("result-info");
@@ -71,11 +81,8 @@ function renderResults(songs) {
 
     $info.append($title).append($artist);
 
-    // 右側：キーやリンク
-    const $extra = $("<div>").addClass("result-extra");
-    $extra.append(
-      $("<span>").addClass("key").text(`${song.keyLow}〜${song.keyHigh}`)
-    );
+    // 中央：リンク（固定幅領域）
+    const $links = $("<div>").addClass("result-links");
 
     if (song.youtube) {
       const $yt = $("<a>")
@@ -85,7 +92,7 @@ function renderResults(songs) {
           '<i class="fa-brands fa-youtube" style="color:#ff6083; font-size:18px;"></i>'
         )
         .css("text-decoration", "none");
-      $extra.append($yt);
+      $links.append($yt);
     }
 
     if (song.spotify) {
@@ -96,51 +103,18 @@ function renderResults(songs) {
           '<i class="fab fa-spotify" style="color:#1DB954; font-size:18px; "></i>'
         )
         .css("text-decoration", "none");
-      $extra.append($sp);
+      $links.append($sp);
     }
 
-    $item.append($info).append($extra);
+    // // 右側：キーやリンク
+    // const $key = $("<div>")
+    //   .addClass("result-key")
+    //   .text(`${song.keyLow}〜${song.keyHigh}`);
+
+    // 順番に追加
+    $item.append($info).append($links); //.append($key);
     $list.append($item);
-
-    // const $item = $("<li>");
-    // const $title = $("<span>").text(
-    //   `${song.title}（${song.artist}） ${song.keyLow}〜${song.keyHigh}`
-    // );
-
-    // // アイコンリンク格納
-    // const $icons = $("<span>").css("margin-left", "6px");
-
-    // // YouTubeリンク
-    // if (song.youtube) {
-    //   const $yt = $("<a>")
-    //     .attr("href", song.youtube)
-    //     .attr("target", "_blank")
-    //     .html(
-    //       '<i class="fa-brands fa-youtube" style="color:#ff6083; font-size:18px;"></i>'
-    //     )
-    //     .css("text-decoration", "none");
-    //   $icons.append($yt);
-    // }
-
-    // // Spotifyリンク
-    // if (song.spotify) {
-    //   const $sp = $("<a>")
-    //     .attr("href", song.spotify)
-    //     .attr("target", "_blank")
-    //     .html(
-    //       '<i class="fab fa-spotify" style="color:#1DB954; font-size:18px; margin-left:8px;"></i>'
-    //     )
-    //     .css("text-decoration", "none");
-    //   $icons.append($sp);
-    // }
-
-    // // タイトルとアイコンを li に追加
-    // $item.append($title).append($icons);
-    // $list.append($item);
   });
-
-  // 検索結果件数表示
-  // $(".resultCount").text(`(${songs.length}件)`);
 }
 
 // 曲名絞り込み
@@ -349,4 +323,15 @@ $(function () {
 
     textarea.remove();
   }
+
+  // jQueryでモーダル制御
+  $("#helpBtn").on("click", function () {
+    $("#helpModal").fadeIn();
+  });
+  $("#closeModal, #helpModal").on("click", function (e) {
+    console.log("モーダル閉じる", e);
+    if (e.target.id === "helpModal" || e.target.id === "closeModal") {
+      $("#helpModal").fadeOut();
+    }
+  });
 });
