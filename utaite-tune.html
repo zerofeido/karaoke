@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>歌い手キー</title>
+    <title>UtaiteTune</title>
     <link rel="stylesheet" href="css/style.css" />
     <!-- Font Awesome -->
     <link
@@ -29,6 +29,7 @@
   <body>
     <div class="pageTitleContainer">
       <h1 class="pageTitle">UtaiteTune</h1>
+      <button id="helpBtn" class="helpBtn">？</button>
     </div>
 
     <div class="keyAdjustContainer container">
@@ -111,11 +112,55 @@
         キー範囲検索
       </button> -->
         <button class="nav-item" data-href="key-adjust.html">
-          KaraokeTuneUp
+          KaraokeTune
         </button>
         <button class="nav-item" data-href="utaite-tune.html">
           UtaiteTune
         </button>
+      </div>
+    </div>
+
+    <!-- 説明モーダル -->
+    <div id="helpModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <div class="modalTitle">
+          <h2>🎵 歌い手さんのキーを見つけよう</h2>
+        </div>
+        <div class="modalTextArea">
+          <div class="modalStep">
+            <span class="modalStepNumber">1</span>
+            <span class="modalStepText"
+              >歌いたい曲のアーティスト名を入力または選択で絞り込み</span
+            >
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">2</span>
+            <span class="modalStepText"
+              >歌いたい曲を入力または選択 <span class="textRed"> *</span></span
+            >
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">3</span>
+            <span class="modalStepText"
+              >調べたい歌い手さんを選択 <span class="textRed"> *</span></span
+            >
+          </div>
+          <div class="modalStep">
+            <span class="modalStepNumber">4</span>
+            <span class="modalStepText">歌い手のキーを調べるボタン押下</span>
+          </div>
+
+          <div class="modalStepEnd">
+            「<span class="textRed">*</span>」は入力必須項目
+          </div>
+          <div class="modalStepAnime">
+            <video autoplay muted playsinline loop>
+              <source src="videos/猫耳web透過.webm" type="video/mp4" />
+              <p>お使いのブラウザは動画に対応していません。</p>
+            </video>
+          </div>
+        </div>
       </div>
     </div>
 
