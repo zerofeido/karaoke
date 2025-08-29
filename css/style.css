@@ -69,9 +69,20 @@ body.light-mode .pageTitleContainer {
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* コンテナ */
+body.light-mode .container {
+  background: #fff;
+}
+
+body.light-mode .helpBtn {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #d1d1d1;
+}
+
 body.light-mode #resultList li {
   background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 body.light-mode .select2-container .select2-dropdown {
@@ -119,6 +130,12 @@ body.light-mode .key-tips summary {
   color: #ffaf14;
 }
 
+/* 検索結果 */
+body.light-mode #resultSection #result {
+  background: #ffffff;
+  color: #333;
+}
+
 /* ボトムナビ */
 body.light-mode .bottomNavContainer {
   background-color: #f1f1f1;
@@ -139,7 +156,7 @@ body.light-mode .nav-item {
 
 body.light-mode .nav-item.active {
   color: white;
-  background-color: #3498db;
+  background: linear-gradient(135deg, #1e7a95, #58bcd1);
 }
 
 body.light-mode .bottomNavLinkWraper {
@@ -157,6 +174,71 @@ body.light-mode
   background-color: #f1f1f1;
 }
 
+/* modal */
+body.light-mode .modal h2 {
+  color: #fff;
+}
+
+/* TuneFinder */
+body.light-mode #resultSection {
+  color: #333;
+}
+
+/* モーダル */
+body.light-mode #closeModal {
+  color: #333;
+  border: 1px solid #333;
+}
+body.light-mode .modal-content {
+  background: linear-gradient(135deg, #d3c5f4, #e6e1ff);
+}
+
+body.light-mode .modalTitle h2 {
+  color: #4b3f72;
+}
+body.light-mode .modalStep {
+  background: rgba(255, 255, 255, 0.6);
+}
+body.light-mode #helpModal .modal-content .modalStep .modalStepText {
+  color: #333;
+}
+body.light-mode .modalStepNumber {
+  background: #4b3f72;
+  color: white;
+}
+body.light-mode .modalStepEnd {
+  color: #6d6d6d;
+}
+
+body.light-mode .textRed {
+  color: #ff7eb9;
+}
+
+body.light-mode .searchButton {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #1e7a95, #58bcd1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+body.light-mode #resultSection button {
+  background: linear-gradient(135deg, #1e7a95, #58bcd1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* index */
+body.light-mode .index-accordion.accordion-content.open {
+  background: #f1f1f1;
+}
+body.light-mode .current-value {
+  color: #333;
+}
+
+/* key-adjust */
+body.light-mode .key-tips li {
+  background: white;
+  color: #333;
+}
+
 /*---------------------------*/
 /* ライトモード終わり */
 /*---------------------------*/
@@ -164,16 +246,20 @@ body.light-mode
 /******************/
 /* 全画面共通コンテナ */
 .container {
+  width: 85%;
   max-width: 480px;
   margin: 0 auto;
   padding: 1rem;
-  margin-top: 80px;
+  margin-top: 90px;
   margin-bottom: 90px;
+  background: #2b2f3a;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 @media screen and (max-height: 800px) {
   .keyAdjustContainer {
-    margin-bottom: 130px;
+    margin-bottom: 160px;
   }
 }
 
@@ -218,7 +304,8 @@ button {
   font-size: 1rem;
   border: none;
   border-radius: 8px;
-  background-color: #3498db;
+  /* background-color: #3498db; */
+  background: linear-gradient(135deg, #2f3d56, #6a7ba1);
   color: white;
   cursor: pointer;
   width: 100%;
@@ -237,9 +324,128 @@ button {
   width: 100%;
   z-index: 100;
   top: 0;
+  display: flex; /* 横並び */
+  align-items: center; /* 縦方向も揃える */
+  gap: 8px; /* タイトルとボタンの間隔 */
 }
 .pageTitleContainer h1 {
   margin: 0;
+}
+
+/* ヘルプボタン */
+.helpBtn {
+  margin-left: 8px;
+  font-size: 14px;
+  border: none;
+  background: #444;
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+.modal li {
+  list-style: none;
+}
+
+.modal-content {
+  background: linear-gradient(135deg, #2f3d56, #6a7ba1);
+  color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 16px;
+  width: 80%;
+  max-width: 400px;
+  border: 2px solid rgb(182 234 255 / 50%);
+  max-height: 90vh;
+  overflow-y: auto; /* 中身がはみ出したら縦スクロール */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; /* iOSでスムーズスクロール */
+  position: relative;
+}
+
+.modalTitle h2 {
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+}
+.modalTextArea {
+  position: relative;
+}
+
+#helpModal .modal-content .modalStep .modalStepText {
+  color: #f1f1f1;
+}
+
+.modalStep {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+.modalStepNumber {
+  display: inline-block;
+  font-size: 0.9rem;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  border-radius: 50%;
+  background: #fff; /* アクセントカラー */
+  color: #333;
+  font-weight: bold;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.modalStepText {
+  flex: 1;
+  word-break: break-word;
+}
+.modalStepEnd {
+  padding-bottom: 100px;
+  color: #ddd;
+}
+.modalStepAnime {
+  position: absolute;
+  bottom: 0;
+  right: -35px;
+}
+.modalStepAnime video {
+  width: 200px;
+}
+
+.close {
+  font-size: 20px;
+  height: 32px;
+  width: 32px;
+  bottom: 30px;
+  left: 50%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 9999;
 }
 
 /* 上下補正ボタン */
@@ -304,30 +510,51 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3a3a3a;
-  padding: 0.6rem;
-  margin-bottom: 0.5rem;
-  border-radius: 6px;
+  /* background-color: #3a3a3a; */
+  background: #2b2f3a;
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+  border-radius: 12px;
   flex-wrap: wrap; /* 小さい画面でも崩れにくい */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 /* 左側：曲名・アーティスト名 */
 .result-info {
   display: flex;
   flex-direction: column;
+  /* max-width: 50%; */
+  flex: 1;
+  min-width: 0;
 }
-
 /* 曲名太字 */
 .result-title {
   font-weight: bold;
   font-size: 1rem;
   color: #fff;
 }
-
 /* アーティスト名 */
 .result-artist {
   font-size: 0.85rem;
   color: #ccc;
+}
+
+/* 中央：リンク */
+.result-links {
+  width: 80px;
+  text-align: right;
+}
+.result-links a {
+  margin: 0 6px;
+  font-size: 18px;
+}
+
+/* 右側：キー */
+.result-key {
+  text-align: right;
+  flex-shrink: 0;
+  font-size: 0.8rem;
 }
 
 /* 右側：キー・リンク */
@@ -338,6 +565,7 @@ button {
   color: #eee;
   flex-shrink: 0;
   align-items: center;
+  max-width: 50%;
 }
 
 /* 入力欄が親の幅を超えないように */
@@ -359,10 +587,11 @@ span.select2 {
 
 /* 文字の上の要素 */
 span .select2-selection.select2-selection--single {
-  background-color: #3a3a3a;
-  color: white;
-  border-radius: 8px;
   height: 100%;
+  border-radius: 8px;
+  background: #232730;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 /* テキスト表示 */
@@ -470,9 +699,10 @@ span.select2-container--default
 /* indexのみ */
 .index-accordion.accordion-content.open {
   margin-top: 0.3rem;
-  padding: 0.6rem;
-  border: 1px solid #aaa;
+  padding: 1rem;
   border-radius: 8px;
+  background: #232730;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* レンジスライダー */
@@ -555,6 +785,39 @@ input[type="range"] {
   font-size: 0.9rem;
   color: #fff;
   text-align: center;
+}
+
+/* 検索結果 */
+#resultSection #result {
+  padding: 1rem;
+  background-color: #2b2f3a;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  flex-wrap: wrap;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+#resultSection #result #resultText {
+  padding: 0 5px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+/* プラス値 */
+#resultSection #result #resultText.plusText {
+  color: #4a90e2;
+  background: rgba(74, 144, 226, 0.1);
+}
+
+/* マイナス値 */
+#resultSection #result #resultText.minusText {
+  color: #e57373;
+  background: rgba(229, 115, 115, 0.1);
+}
+
+/* 普通 */
+#resultSection #result #resultText.neutralText {
+  color: #90a4ae;
+  background: rgba(144, 164, 174, 0.1);
 }
 
 /* selectのdisabled */
@@ -678,7 +941,13 @@ input:checked + .slider::before {
 
 .nav-item.active {
   color: white;
-  background-color: #3498db;
+  background: linear-gradient(135deg, #2f3d56, #6a7ba1);
+  /* background-color: #3498db; */
+}
+
+.textRed {
+  color: #ff7eb9;
+  font-weight: bold;
 }
 
 /**************************/
@@ -686,6 +955,10 @@ input:checked + .slider::before {
 /**************************/
 #resultSection {
   display: none;
+  color: #f1f1f1;
+}
+#resultSection button {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 #resultHeader {
   display: flex;
@@ -766,6 +1039,15 @@ input:checked + .slider::before {
   margin-bottom: 0.5em;
   max-width: 500px;
   margin: 0 auto;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  margin-bottom: 0.6em;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /**************************/
@@ -773,6 +1055,14 @@ input:checked + .slider::before {
 /**************************/
 #utaiteSection {
   margin-top: 15px;
+}
+
+#resultSection #utaiteResult {
+  padding: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
 }
 
 /**************************/
@@ -835,7 +1125,6 @@ input:checked + .slider::before {
 
 .searchButton {
   width: 100%;
-  background-color: #3498db;
   color: white;
   border: none;
   padding: 12px;
@@ -843,6 +1132,8 @@ input:checked + .slider::before {
   border-radius: 25px;
   cursor: pointer;
   margin-top: 35px;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 #searchBtn {
