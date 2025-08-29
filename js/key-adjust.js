@@ -131,7 +131,7 @@ $(function () {
     const reference = allSongs.find((song) => song.title === referenceTitle);
 
     if (!target || !reference) {
-      $("#recommendationText").text("曲が見つかりませんでした");
+      $("#result").text("曲が見つかりませんでした");
       return;
     }
 
@@ -142,7 +142,16 @@ $(function () {
     const avgDiff = Math.round((lowDiff + highDiff) / 2);
 
     const sign = avgDiff > 0 ? "+" : "";
-    $("#recommendationText").text(`おすすめのキー変更： ${sign}${avgDiff}`);
+
+    // 色の決定
+    let className = "neutralText"; // ±0
+    if (avgDiff > 0) className = "plusText"; // プラス値
+    if (avgDiff < 0) className = "minusText"; // マイナス値
+
+    // 反映
+    $("#result").html(
+      `おすすめのキー変更： <span id="resultText" class="${className}">${sign}${avgDiff}</span>`
+    );
 
     // 推奨結果セクションを表示
     $("#resultSection").show();
@@ -182,5 +191,15 @@ $(function () {
     // セクションの表示切り替え
     $(".section").hide();
     $(targetSelector).show();
+  });
+
+  // jQueryでモーダル制御
+  $("#helpBtn").on("click", function () {
+    $("#helpModal").fadeIn();
+  });
+  $("#closeModal, #helpModal").on("click", function (e) {
+    if (e.target.id === "helpModal" || e.target.id === "closeModal") {
+      $("#helpModal").fadeOut();
+    }
   });
 });
