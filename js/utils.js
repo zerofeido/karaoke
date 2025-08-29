@@ -97,7 +97,6 @@ function changeMode() {
 function initBottomNav() {
   $(document).ready(function () {
     let currentPage = window.location.pathname.split("/").pop();
-    console.log("currentPage", currentPage);
 
     // 拡張子がある場合は削除
     currentPage = currentPage.replace(/\.html$/, "");
@@ -123,3 +122,4 @@ function initBottomNav() {
 }
 
 export { pitchOrder, pitchToIndex, initBottomNav, changeMode };
+
